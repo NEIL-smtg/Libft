@@ -55,31 +55,43 @@ BONUS		= ft_lstnew.c \
 	ft_lstiter.c \
 	ft_lstmap.c
 
-BONUS_OBJS	= ${BONUS:.c=.o};
-
-OBJS    	=    ${SRCS:.c=.o}
-INCLUDES	= 	 libft.h
-NAME    	=    libft.a
-ARCR    	=    ar cr
+BONUS_OBJS	= 	 $(BONUS:.c=.o);
+OBJS    	=    $(SRCS:.c=.o)
+HEADER		= 	 libft.h
+LIBFT    	=    libft.a
+MAN			=	 man.a
+B			=	 bonus.a
+ARCR    	=    ar -crs
 RMRF    	=    rm -rf
 CFLAGS  	=    -Wall -Wextra -Werror
 GCC     	=    gcc
+BLUE		=	 \033[1;34m
+NC			=    \033[0m
 
-.c.o:
-	${GCC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES}
+all: $(LIBFT)
 
-$(NAME):    ${OBJS}
-	${ARCR} ${NAME} ${OBJS}
+$(LIBFT): m b
 
-all:    ${NAME}
+m: $(MAN)
+
+$(MAN): $(OBJS)
+	$(ARCR)	$(MAN) $(OBJS)
+	cp $(MAN) $(LIBFT)
+
+b: $(B)
+
+$(B): $(BONUS_OBJS)
+	$(ARCR) $(B) $(BONUS_OBJS)
+	cp $(B) $(LIBFT)
 
 clean:
-	${RMRF} ${OBJS} ${BONUS_OBJS}
+	$(RMRF) $(OBJS) $(BONUS_OBJS)
+	clear
+	@echo "${BLUE}deleted .o files$(NC)"
 
 fclean:    clean
-	${RMRF} $(NAME)
+	$(RMRF) $(LIBFT) $(B) $(MAN)
+	clear
+	@echo "${BLUE}deleted .o .a files$(NC)"
 
 re:    fclean all
-
-bonus:    ${OBJS} ${BONUS_OBJS}
-	${ARCR} $(NAME) ${BONUS_OBJS}
