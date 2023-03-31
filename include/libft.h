@@ -6,7 +6,7 @@
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:01:42 by suchua            #+#    #+#             */
-/*   Updated: 2022/10/06 18:43:03 by suchua           ###   ########.fr       */
+/*   Updated: 2023/04/01 05:09:58 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-#include <stdint.h>
+# include <stdint.h>
 
 //bonus
 typedef struct s_list
@@ -74,5 +74,12 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+//gnl
+char	*get_next_line(int fd);
+char	*gnl_strjoin(char *line, char *partial);
+
+//printf
+int		ft_printf(const char *format, ...);
 
 #endif
