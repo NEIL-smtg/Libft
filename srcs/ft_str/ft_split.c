@@ -6,7 +6,7 @@
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:33:34 by suchua            #+#    #+#             */
-/*   Updated: 2023/04/01 07:42:50 by suchua           ###   ########.fr       */
+/*   Updated: 2023/04/01 17:48:35 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static char	**recursive_split(char const *s, char c, int depth)
 	char	**strs;
 
 	i = 0;
-	while (s[i] != c)
+	while (s[i] && s[i] != c)
 		++i;
 	str = ft_substr(s, 0, (size_t) i);
 	if (!str)
 		return (NULL);
-	while (s[i] == c)
+	while (s[i] && s[i] == c)
 		++i;
 	if (s[i])
 		strs = recursive_split(s + i, c, depth + 1);
