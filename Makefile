@@ -6,7 +6,7 @@
 #    By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 12:01:03 by suchua            #+#    #+#              #
-#    Updated: 2023/04/01 07:23:58 by suchua           ###   ########.fr        #
+#    Updated: 2023/04/03 00:22:32 by suchua           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ STR_FILES		=	ft_bzero ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
 					ft_strnstr ft_strrchr ft_strtrim ft_substr
 TO_FILES		=	ft_tolower ft_toupper
 GNL_FILES		=	get_next_line_bonus get_next_line_utils_bonus
+MATH_FILES		=	ft_pow ft_sqrt
 
 # addprefix suffix .c
 ATOITOA_SRCS	=	$(addprefix $(SRCS_DIR)ft_atoitoa/, $(addsuffix .c, $(ATOITOA_FILES)))
@@ -46,6 +47,7 @@ PUT_SRCS		=	$(addprefix $(SRCS_DIR)ft_put/, $(addsuffix .c, $(PUT_FILES)))
 STR_SRCS		=	$(addprefix $(SRCS_DIR)ft_str/, $(addsuffix .c, $(STR_FILES)))
 TO_SRCS			=	$(addprefix $(SRCS_DIR)ft_to/, $(addsuffix .c, $(TO_FILES)))
 GNL_SRCS		=	$(addprefix $(SRCS_DIR)gnl/, $(addsuffix .c, $(GNL_FILES)))
+MATH_SRCS		=	$(addprefix $(SRCS_DIR)gnl/, $(addsuffix .c, $(MATH_FILES)))
 
 # addprefix suffix .o
 ATOITOA_OBJS	=	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(ATOITOA_FILES)))
@@ -57,6 +59,8 @@ PUT_OBJS		=	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(PUT_FILES)))
 STR_OBJS		=	$(addprefix $(OBJS_DIR),  $(addsuffix .o, $(STR_FILES)))
 TO_OBJS			=	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(TO_FILES)))
 GNL_OBJS		=	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(GNL_FILES)))
+MATH_SRCS		=	$(addprefix $(SRCS_DIR)gnl/, $(addsuffix .o, $(MATH_FILES)))
+
 
 
 #concat all .c files
@@ -117,6 +121,9 @@ $(OBJS_DIR)%.o:$(SRCS_DIR)ft_to/%.c
 	@$(CC) $(CFLAGS) -I $(INCLUDES) -c $^ -o $@
 
 $(OBJS_DIR)%.o:$(SRCS_DIR)gnl/%.c
+	@$(CC) $(CFLAGS) -I $(INCLUDES) -c $^ -o $@
+
+$(OBJS_DIR)%.o:$(SRCS_DIR)ft_math/%.c
 	@$(CC) $(CFLAGS) -I $(INCLUDES) -c $^ -o $@
 
 $(NAME): $(OBJS)
