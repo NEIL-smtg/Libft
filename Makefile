@@ -6,12 +6,13 @@
 #    By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 12:01:03 by suchua            #+#    #+#              #
-#    Updated: 2023/04/06 19:47:16 by suchua           ###   ########.fr        #
+#    Updated: 2023/05/27 20:29:47 by suchua           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # LIB NAME
 NAME			=	libft.a
+SONAME			=	libft.so
 INCLUDES		=	include/	
 OBJS_DIR		=	objs/
 SRCS_DIR		=	srcs/
@@ -129,12 +130,18 @@ $(OBJS_DIR)%.o:$(SRCS_DIR)ft_math/%.c
 $(NAME): $(OBJS)
 	@$(ARCR) $(NAME) $(OBJS)
 
+so: $(OBJS)
+	clang -shared -I$(INCLUDES) -o $(SONAME) $(OBJS)
+
+bonus: $(NAME)
+
 clean:
 	$(RM) $(OBJS_DIR)
 
 fclean:
 	make clean
 	$(RM) $(NAME)
+	$(RM) $(SONAME)
 
 re: fclean all
 

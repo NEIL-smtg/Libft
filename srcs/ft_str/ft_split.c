@@ -6,7 +6,7 @@
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:33:34 by suchua            #+#    #+#             */
-/*   Updated: 2023/04/01 17:48:35 by suchua           ###   ########.fr       */
+/*   Updated: 2023/05/27 20:35:20 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ char	**ft_split(char const *s, char c)
 {
 	if (!s)
 		return (NULL);
-	while (*s == c)
+	while (*s && *s == c)
 		s++;
-	if (!s)
+	if (!*s)
 		return (ft_calloc(1, sizeof(char *)));
 	return (recursive_split(s, c, 0));
 }
